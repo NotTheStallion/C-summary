@@ -232,7 +232,7 @@ _____________________________________________________________________ Switch Sta
      
 char myGrade = 'A';
 switch(myGrade){
-     case 'A':
+     case 'A': // we only put cases for the variable myGrade (! no conditions)
           printf("You Pass\n");
           break;
      case 'F':
@@ -274,24 +274,48 @@ ___________________________________________________________________________ Stru
 struct Book{
      char title[100];
      char author[100];
-}
+};
+
+typedef struct{
+     char title[100];
+     char author[100];
+} _Book; 
+
 
 int main(){
 
-      struct Book book1;
-      book1.numPages = 600;
-      strcpy( book1.title, "Harry Potter" );
-      strcpy( book1.author, "JK Rowling");
+     struct Book book1;  // _Book book1;
+     book1.numPages = 600;
+     strcpy( book1.title, "Harry Potter" );
+     strcpy( book1.author, "JK Rowling");
 
-      printf("%s \n", book1.title);
+     printf("%s \n", book1.title);
 
-      return 0;
+     return 0;
 }
 
+// _Book* ptr_book;
+// ptr_book->title  (similar to) (*ptr_book).title
+// If * is next to type it means the variable is a pointer to a memory box holding that type. Ex: Float** ptr (means ptr is a pointer [because * next to type Float*] to a Float*)
+// If * is next to variable it removes a pointer (follows pointer path one time) 
 
 ___________________________________________________________________
      
      
-enum color {black , blue ,red}
+enum color {
+     black,
+     blue,
+     red
+};
+
+typedef enum {
+     black,
+     blue,
+     red
+} _color;
+
 enum color c = blue +1
 //la nouvelle valeur de C est "red"
+
+// if _color is defined a type of enum (typedef enum) it no longer necessary to specify it is an enum at every occurance
+_color color1 = black;
